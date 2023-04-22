@@ -22,52 +22,69 @@ CREATE TABLE Musicas
 )
 
 INSERT INTO Cds (Nome, Data_Compra, Valor_Pago, Local_Compra, Album)
-VALUES ('Xamã', '17/04/2023', 150.00, 'Ituiutaba', 'Zodíaco')
+VALUES ('Xamã', '17/04/2023', 150.00, 'Loja X', 'Zodíaco')
 
 INSERT INTO Cds (Nome, Data_Compra, Valor_Pago, Local_Compra, Album)
-VALUES ('Xamã', '17/12/2023', 150.00, 'Ituiutaba', 'Zodíaco')
+VALUES ('MC Cabelinho', '27/04/2023', 120.00, 'Loja Y', 'LITTLE HAIR')
 
 INSERT INTO Cds (Nome, Data_Compra, Valor_Pago, Local_Compra, Album)
-VALUES ('MC Cabelinho', '17/04/2023', 150.00, 'Ituiutaba', 'LITTLE HAIR')
+VALUES ('L7NNON', '21/04/2023', 100.00, 'Loja Z', 'Hip Hop Rare')
 
 INSERT INTO Cds (Nome, Data_Compra, Valor_Pago, Local_Compra, Album)
-VALUES ('L7', '17/04/2023', 150.00, 'Ituiutaba', 'Hip Hop Rare')
+VALUES ('Orochi', '11/06/2023', 180.00, 'Loja X', 'Vida Cara')
 
 INSERT INTO Cds (Nome, Data_Compra, Valor_Pago, Local_Compra, Album)
-VALUES ('Orochi', '11/04/2023', 150.00, 'Ituiutaba', 'Vida Cara')
+VALUES ('Matuê', '02/11/2023', 250.00, 'Loja Y', 'Máquina do Tempo')
 
 INSERT INTO Cds (Nome, Data_Compra, Valor_Pago, Local_Compra, Album)
-VALUES ('Orochi', '19/11/2023', 150.00, 'Ituiutaba', 'Vida Cara')
+VALUES ('BIN', '17/08/2023', 50.00, 'Loja W', 'Esquinas')
 
 INSERT INTO Cds (Nome, Data_Compra, Valor_Pago, Local_Compra, Album)
-VALUES ('BIN', '17/04/2023', 150.00, 'Ituiutaba', 'Esquinas')
+VALUES ('Ret', '11/01/2023', 200.00, 'ILoja W', 'Neurótico de Guerra')
 
-INSERT INTO Cds (Nome, Data_Compra, Valor_Pago, Local_Compra, Album)
-VALUES ('Ret', '17/04/2023', 150.00, 'Ituiutaba', 'Neurótico')
+SELECT * FROM Cds
 
 INSERT INTO Musicas (Numero, Nome, Artista, Tempo) 
-VALUES (1, 'Malvadão 3', 'Xamã', '3:30')
+VALUES (1, 'Áries', 'Xamã', '3:30')
 
 INSERT INTO Musicas (Numero, Nome, Artista, Tempo) 
-VALUES (5, 'Amor de Fim de Noite', 'Orochi', '3:25')
+VALUES (1, 'Sagitário', 'Xamã', '3:30')
 
 INSERT INTO Musicas (Numero, Nome, Artista, Tempo) 
-VALUES (3, 'Erro', 'Cabelinho', '3:10')
+VALUES (2, 'Erro', 'Cabelinho', '3:10')
 
 INSERT INTO Musicas (Numero, Nome, Artista, Tempo) 
-VALUES (4, 'Algumas Frases', 'L7', '3:50')
+VALUES (3, 'Algumas Frases', 'L7', '3:50')
 
-SELECT * FROM Cds	/*1*/
+INSERT INTO Musicas (Numero, Nome, Artista, Tempo) 
+VALUES (5, '777-666', 'Matuê', '4:32')
 
-SELECT Nome, Data_Compra FROM Cds GROUP BY Nome		/*2*/
+INSERT INTO Musicas (Numero, Nome, Artista, Tempo) 
+VALUES (5, 'É sal', 'Matuê', '3:00')
 
-SELECT Nome, Data_Compra FROM Cds ORDER BY Data_Compra DESC 	/*3*/
+SELECT * FROM Cds
 
-SELECT SUM(Cds.Valor_Pago) AS Total FROM Cds	/*4*/
+SELECT Nome, Data_Compra FROM Cds
 
-SELECT * FROM Musicas WHERE Numero = 1		/*5*/
+SELECT Nome, Data_Compra FROM Cds ORDER BY Data_Compra ASC
 
-SELECT SUM(Musicas.Tempo) AS Total FROM Musicas	/*6*/
+SELECT SUM(Cds.Valor_Pago) AS Total FROM Cds
 
-SELECT Numero, Nome, Tempo FROM Musicas WHERE Numero = 5 GROUP BY Cod	/*7*/
+SELECT Musicas.Cod, Musicas.Numero, Musicas.Nome, Musicas.Artista, Musicas.Tempo 
+FROM Musicas INNER JOIN Cds ON Musicas.Numero = Cds.Cod WHERE Numero = 1
+
+SELECT SUM(Musicas.Tempo) AS Total FROM Musicas
+
+SELECT Musicas.Cod, Musicas.Nome, Musicas.Tempo FROM Musicas WHERE Numero = 5 ORDER BY 
+Cod ASC
+
+SELECT COUNT (*) FROM Musicas
+
+SELECT AVG(Tempo) AS Total FROM Musicas
+
+SELECT COUNT (*) FROM Cds
+
+SELECT Nome FROM Musicas ORDER BY Nome ASC
+
+SELECT Nome FROM Cds WHERE Valor_Pago = (SELECT MAX(Valor_Pago) AS Total FROM Cds)
 
